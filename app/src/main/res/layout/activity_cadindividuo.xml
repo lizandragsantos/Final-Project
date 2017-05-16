@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:text="CANCELAR"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="503dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
+        android:text="CONCLUIR"
+        tools:layout_editor_absoluteX="240dp"
+        tools:layout_editor_absoluteY="503dp" />
+
+    <RadioButton
+        android:id="@+id/rdo_gescolaridade5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ensino superior completo ou não"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="431dp"
+        tools:textSize="@dimen/text_size" />
+
+    <RadioButton
+        android:id="@+id/rdo_gescolaridade1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Não possui escolaridade"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="303dp"
+        tools:textSize="@dimen/text_size" />
+
+    <RadioButton
+        android:id="@+id/rdo_gescolaridade3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ensino fundamental completo"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="367dp"
+        tools:textSize="@dimen/text_size" />
+
+    <RadioButton
+        android:id="@+id/rdo_gescolaridade4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ensino médio completo"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="399dp"
+        tools:textSize="@dimen/text_size" />
+
+    <RadioButton
+        android:id="@+id/rdo_gescolaridade2"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:text="Até o 5º ano do ensino fundamental"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="335dp"
+        tools:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt_dadospessoais"
+        android:layout_marginStart="21dp"
+        android:text="Grau de Escolaridade"
+        android:textSize="@dimen/title_size"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="272dp" />
+
+    <EditText
+        android:id="@+id/edt_idade"
+        android:layout_width="360dp"
+        android:layout_height="64dp"
+        android:layout_alignBottom="@+id/txt_nome"
+        android:layout_alignStart="@+id/edt_idade"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Idade"
+        android:textSize="@dimen/title_size"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <EditText
+        android:id="@+id/edt_nome"
+        android:layout_width="360dp"
+        android:layout_height="65dp"
+        android:layout_alignBottom="@+id/txt_nome"
+        android:layout_alignStart="@+id/edt_idade"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/title_size"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/txt_sexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edt_idade"
+        android:layout_alignStart="@+id/txt_nome"
+        android:text="Sexo"
+        android:textSize="@dimen/title_size"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="173dp" />
+
+    <RadioButton
+        android:id="@+id/rdo_sexof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feminino"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="205dp"
+        tools:textSize="@dimen/text_size" />
+
+    <RadioButton
+        android:id="@+id/rdo_sexom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masculino"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="205dp"
+        tools:textSize="@dimen/text_size" />
+
+</android.support.constraint.ConstraintLayout>

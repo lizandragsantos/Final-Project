@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_instrucao"
+        android:layout_width="352dp"
+        android:layout_height="338dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt_dadospessoais"
+        android:layout_marginStart="21dp"
+        android:text="      A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.
+
+        Não esqueça de pegar uma folha de papel e uma caneta/lápis, pois será útil durante o teste.
+
+        Lembrando que o teste não deve ser realizado pela pessoa que irá ser avaliada."
+        android:textSize="@dimen/text_size"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="67dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt_dadospessoais"
+        android:layout_marginStart="21dp"
+        android:text="Instruções"
+        android:textSize="@dimen/title_size"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+    <Button
+        android:id="@+id/btn_proximo"
+        android:layout_width="116dp"
+        android:layout_height="51dp"
+        android:text="PRÓXIMO"
+        android:textSize="@dimen/text_size"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="500dp" />
+</android.support.constraint.ConstraintLayout>
