@@ -1,15 +1,13 @@
 package com.example.lizandra.projectdetectalzheimer_2.dominio;
 import java.util.Date;
 
-public class Testmeem {
+public class TestMeem {
     private Date data;
-    private int resultado;
-    private int acertos;
-    private int erros;
+    private float acertos;
+    private float erros;
 
-    public Testmeem(Date data, int resultado, int acertos, int erros){
+    public TestMeem(Date data, int resultado, int acertos, int erros){
         this.data = data;
-        this.resultado = resultado;
         this.acertos = acertos;
         this.erros = erros;
     }
@@ -22,15 +20,7 @@ public class Testmeem {
         this.data = data;
     }
 
-    public int getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(int resultado) {
-        this.resultado = resultado;
-    }
-
-    public int getAcertos() {
+    public float getAcertos() {
         return acertos;
     }
 
@@ -38,7 +28,7 @@ public class Testmeem {
         this.acertos = acertos;
     }
 
-    public int getErros() {
+    public float getErros() {
         return erros;
     }
 

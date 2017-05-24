@@ -9,7 +9,11 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 
+
 import com.example.lizandra.projectdetectalzheimer_2.R;
+
+import java.util.*;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Button btn_tmemoria;
@@ -19,30 +23,52 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        btn_tmemoria = (Button) findViewById(R.id.btn_tmemoria);
-        cadIndividuo();
+        //btn_tmemoria = (Button) findViewById(R.id.btn_tmemoria);
+        // cadIndividuo();
+        ListView lista = (ListView) findViewById(R.id.listView);
+        ArrayList<String> opt = preencherDados();
 
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, opt);
+        lista.setAdapter(arrayAdapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0: {
+                        testMemoria();
+                        break;
+                    }
+                    default:
+                        finish();
+                }
+            }
+        });
 
     }
 
-    public void cadIndividuo() {
+    private ArrayList<String> preencherDados() {
+        ArrayList<String> dados = new ArrayList<String>();
+        dados.add("Teste de Memória");
+        dados.add("Sair");
+        return dados;
+    }
+
+    public void testMemoria(){
+        Intent i = new Intent(MainActivity.this, InstruTest.class);
+        startActivity(i);
+    }
+
+    /*public void cadIndividuo() {
         btn_tmemoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //showMessage("teste", "É necessário informar os dados da pessoa a ser avaliada");
-                Toast.makeText(getApplicationContext(), "É necessário informar os dados da pessoa a ser avaliada", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(MainActivity.this, CadastroIndividuo.class);
+                //Toast.makeText(getApplicationContext(), "É necessário informar os dados da pessoa a ser avaliada", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MainActivity.this, InstruTest.class);
                 startActivity(i);
                 //startActivity(new Intent(MainActivity.this,CadastroIndividuo.class));
             }
         });
-    }
-
-    public void showMessage(String title,String Message){
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
+    }*/
 }

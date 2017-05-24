@@ -2,13 +2,17 @@ package com.example.lizandra.projectdetectalzheimer_2.dominio;
 
 
 public abstract class AbsTestMemoria {
-    private Individuo individuo;
-    private Testmeem meem;
+    private Pessoa individuo;
 
-    public AbsTestMemoria(Individuo individuo, Testmeem meem){
+    public AbsTestMemoria(Individuo individuo){
         this.individuo = individuo;
-        this.meem = meem;
     }
 
+    public void setIndividuo(Pessoa individuo) {
+        this.individuo = individuo;
+    }
 
+    public Pessoa getIndividuo() {
+        return individuo;
+    }
 }

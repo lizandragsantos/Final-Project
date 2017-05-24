@@ -1,46 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/txt_instrucao"
-        android:layout_width="352dp"
-        android:layout_height="338dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txt_dadospessoais"
-        android:layout_marginStart="21dp"
-        android:text="      A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.lizandra.projectdetectalzheimer_2.gui.InstruTest">
 
-        Não esqueça de pegar uma folha de papel e uma caneta/lápis, pois será útil durante o teste.
+        <TextView
+            android:id="@+id/txt_instrucao"
+            android:layout_width="0dp"
+            android:layout_height="325dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+            android:text="   A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.\n\n   Não esqueça de pegar uma folha de papel e uma caneta/lápis, pois será útil durante o teste.\n\n    Lembrando que o teste não deve ser realizado pela pessoa que irá ser avaliada."
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ttl_instrucao"
+            app:layout_constraintVertical_bias="0.16"/>
 
-        Lembrando que o teste não deve ser realizado pela pessoa que irá ser avaliada."
-        android:textSize="@dimen/text_size"
-        android:textAlignment="center"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="67dp" />
+        <!--<com.bluejamesbond.text.DocumentView
+            xmlns:document="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/dvText"
+            android:layout_width="359dp"
+            android:layout_height="326dp"
+            document:documentView_textAlignment="left"
+            document:documentView_textSize="18sp"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            android:layout_marginStart="15dp"
+            document:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="15dp"
+            document:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            document:layout_constraintLeft_toLeftOf="parent"
+            document:layout_constraintTop_toTopOf="parent"
+            document:layout_constraintVertical_bias="0.3"
+            tools:layout_editor_absoluteX="6dp"/>-->
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/txt_dadospessoais"
-        android:layout_marginStart="21dp"
-        android:text="Instruções"
-        android:textSize="@dimen/title_size"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="3dp" />
+        <TextView
+            android:id="@+id/ttl_instrucao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="52dp"
+            android:text="Instruções"
+            android:textSize="@dimen/title_size"
+            android:typeface="sans"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <Button
-        android:id="@+id/btn_proximo"
-        android:layout_width="116dp"
-        android:layout_height="51dp"
-        android:text="PRÓXIMO"
-        android:textSize="@dimen/text_size"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="500dp" />
-</android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_proximo"
+            android:layout_width="116dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:text="PRÓXIMO"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <Button
+            android:id="@+id/btn_cancelar"
+            android:layout_width="116dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="16dp"
+            android:onClick="voltar"
+            android:text="VOLTAR"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_proximo"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <!--<WebView
+            android:id="@+id/txt_webview"
+            android:layout_width="355dp"
+            android:layout_height="332dp"
+            android:layout_marginTop="67dp"
+            app:layout_constraintTop_toBottomOf="@+id/ttl_instrucao"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_editor_absoluteX="16dp"/>-->
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

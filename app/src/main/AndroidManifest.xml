@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".gui.InstruTest"></activity>
+        <activity android:name=".gui.CadastroIndividuo"></activity>
+        <activity android:name=".gui.TestMemoria"></activity>
     </application>
 
 </manifest>
