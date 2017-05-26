@@ -12,11 +12,11 @@
     <string name="passo10">Em que estado?</string>
     <string name="passo11"> Peça-o para repetir os três objetos a seguir, independente da ordem, informe os nomes devagar apenas uma vez de forma clara, é importante avisa-lo que será perguntado de novo para memoriza-los.\n\ ARVORE, CASA, MESA.\n\n    Diga o número de objetos que ele acertou.</string>
     <string name="passo12">Pergunte-o se realiza calculos</string>
-    <string name="passo12a">Solicite o calculo dos números a seguir:</string>
+    <string name="passo12a">Solicite o calculo dos números a seguir:\n\nÉ necessário realizar todos os calculos e informa-los, pois a cada campo não preenchido será considerado como erro.</string>
     <string name="passo12b">Peça-o para que Soletre a palavra MUNDO de trás para frente\n\nO D N U M</string>
     <string name="passo13">Solicite que repita as três palavras que foi dita anteriormente.\n\nARVORE, CASA, MESA\n\nDiga o número de objetos q ele acertou.</string>
     <string name="passo14">Aponte a caneta e o relógio e peça-o para nomeá-los.\n\nPermita 10 segundos para cada objeto.</string>
-    <string name="passo15"> Peça-o para repetir a seguinte frase:\n\n"EM AQUI, NEM ALI, NEM LÁ."\n\nPronuncie em voz alta, bem articulada e lentamente.</string>
+    <string name="passo15"> Peça-o para repetir a seguinte frase:\n\n"NEM AQUI, NEM ALI, NEM LÁ."\n\nPronuncie em voz alta, bem articulada e lentamente.</string>
     <string name="passo16">Dê ao entrevistado uma folha de papel, na qual esteja escrito em letras grandes: “FECHE OS OLHOS”. Peça que leia o papel e faça está escrito.\n\nPermita dez segundos.</string>
     <string name="passo17">Pegue outra folha de papel, peça-o que quando entregar pegue com sua mão direita, dobre-o na metade com as duas mãos e coloque no chão.</string>
     <string name="passo18">Peça-o que escreva uma frase de sua preferência em uma folha em branco, caso apresente algum erro permita corrigir caso tenha consciência do erro em no máximo trinta segundos.</string>
@@ -26,9 +26,9 @@
     <string name="objeto1">1 Objeto</string>
     <string name="objetos2">2 Objetos</string>
     <string name="objetos3">3 Objetos</string>
-    <string name="acao1">1 Objeto</string>
-    <string name="acoes2">2 Objetos</string>
-    <string name="acoes3">3 Objetos</string>
+    <string name="acao1">1 Ação</string>
+    <string name="acoes2">2 Ações</string>
+    <string name="acoes3">3 Ações</string>
     <string name="nenhum">Nenhum</string>
     <string name="sim">SIM</string>
     <string name="nao">NÃO</string>

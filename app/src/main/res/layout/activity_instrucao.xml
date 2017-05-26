@@ -14,21 +14,18 @@
         <TextView
             android:id="@+id/txt_instrucao"
             android:layout_width="0dp"
-            android:layout_height="325dp"
+            android:layout_height="452dp"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:gravity="left"
-            android:text="   A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.\n\n   Não esqueça de pegar uma folha de papel e uma caneta/lápis, pois será útil durante o teste.\n\n    Lembrando que o teste não deve ser realizado pela pessoa que irá ser avaliada."
             android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ttl_instrucao"
-            app:layout_constraintVertical_bias="0.16"/>
+            />
 
         <!--<com.bluejamesbond.text.DocumentView
             xmlns:document="http://schemas.android.com/apk/res-auto"
@@ -55,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="16dp"
             android:text="Instruções"
             android:textSize="@dimen/title_size"
             android:typeface="sans"
@@ -63,7 +60,8 @@
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"/>
 
 
         <Button

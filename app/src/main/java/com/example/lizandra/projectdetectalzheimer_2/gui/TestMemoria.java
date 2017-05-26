@@ -23,7 +23,7 @@ public class TestMemoria extends AppCompatActivity {
     LinearLayout lcalculo;
     ImageView imageView;
     int i=0, clicked=0;
-    float acerto=0, erro=0;
+    float acerto=0, erro=0,acertoant=0, erroant=0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -230,9 +230,9 @@ public class TestMemoria extends AppCompatActivity {
             }
             default:
             {
-                texto.setText("");
                 calcPontuacao1();
                 btn_proximo.setVisibility(View.VISIBLE);
+                texto.setText("Acertos: "+acerto+"\nErros: "+erro);
             }
 
         }
@@ -347,7 +347,7 @@ public class TestMemoria extends AppCompatActivity {
         if  (clicked==1){
             acerto++;
         }
-        else {
+        else if (clicked==2){
             erro++;
         }
         Toast.makeText(TestMemoria.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();

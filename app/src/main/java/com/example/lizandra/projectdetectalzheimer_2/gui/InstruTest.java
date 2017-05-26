@@ -36,24 +36,25 @@ public class InstruTest extends AppCompatActivity {
         btn_proximo = (Button) findViewById(R.id.btn_proximo);
         activityCadastro();
 
-       /* txt_instrucao = (TextView) findViewById(R.id.txt_instrucao);
+        txt_instrucao = (TextView) findViewById(R.id.txt_instrucao);
 
-        Spannable span = new SpannableStringBuilder("   A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.\n" +
+        Spannable span = new SpannableStringBuilder("   Este é o teste mais utilizado para avaliar a função cognitiva por ser rápido e de fácil aplicação. Deve ser utilizado como instrumento de rastreamento não substituindo uma avaliação mais detalhada, não serve como teste diagnóstico, mas sim pra indicar funções que precisam ser investigadas.\n" +
+                "   A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.\n" +
                 "   Não esqueça de pegar uma folha de papel e uma caneta/lápis, pois será útil durante o teste.\n" +
                 "   Lembrando que o teste não deve ser realizado pela pessoa que irá ser avaliada.\n");
         txt_instrucao.setText(span);
 
 
-        Spannable span = new SpannableStringBuilder("   A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.\n" +
+        /*Spannable span = new SpannableStringBuilder("   A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.\n" +
                  "   Não esqueça de pegar uma folha de papel e uma caneta/lápis, pois será útil durante o teste.\n" +
                  "   Lembrando que o teste não deve ser realizado pela pessoa que irá ser avaliada.\n\n" +
                  "  Será necessário informar os dados da pessoa a ser avaliada");
         dvText = (DocumentView) findViewById(R.id.dvText);
         dvText.setText(span);
         dvText.getDocumentLayoutParams().setHyphenator(DefaultHyphenator.getInstance(HyphenPattern.PT));
-        dvText.getDocumentLayoutParams().setHyphenated(true);*/
+        dvText.getDocumentLayoutParams().setHyphenated(true);
 
-       /* mWebView = (WebView) findViewById(R.id.txt_webview);
+        mWebView = (WebView) findViewById(R.id.txt_webview);
 
         String text = "<html><body>"
                 + "<p align=\"justify\">    A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.</p> "
