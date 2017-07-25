@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_visualizar_cadastro"
+        android:orderInCategory="100"
+        android:title="Visualizar cadastro"/>
+
+    <item
+        android:id="@+id/item_delete_cadastro"
+        android:orderInCategory="100"
+        android:title="Deletar cadastro"></item>
+
+    <item
+        android:id="@+id/item_testes_realizados"
+        android:orderInCategory="101"
+        android:title="Testes já realizados"/>
+
+    <item
+        android:id="@+id/item_teste"
+        android:orderInCategory="102"
+        android:title="Novo teste de memória"></item>
+
+</menu>

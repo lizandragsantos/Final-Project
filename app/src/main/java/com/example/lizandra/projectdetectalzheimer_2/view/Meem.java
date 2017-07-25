@@ -1,5 +1,6 @@
-package com.example.lizandra.projectdetectalzheimer_2.gui;
+package com.example.lizandra.projectdetectalzheimer_2.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,14 +17,15 @@ import com.example.lizandra.projectdetectalzheimer_2.R;
  * Created by LIZANDRA on 18/05/2017.
  */
 
-public class TestMemoria extends AppCompatActivity {
+public class Meem extends AppCompatActivity {
 
     TextView texto;
     Button btn_1, btn_2, btn_3, btn_4, btn_voltar, btn_proximo;
     LinearLayout lcalculo;
     ImageView imageView;
     int i=0, clicked=0;
-    float acerto=0, erro=0,acertoant=0, erroant=0;
+    private float acerto=0, erro=0, ori_temporal=0, ori_espacial=0, mem_imediata=0, calculo=0, mem_recente=0, linguagem=0;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class TestMemoria extends AppCompatActivity {
         {
             case 0:
             {
+                //orientação temporal
                 texto.setText(getString(R.string.passo1));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -57,7 +60,7 @@ public class TestMemoria extends AppCompatActivity {
                 break;
             }
             case 1:
-            {   calcPontuacao1();
+            {   orientaTemporal();
                 texto.setText(getString(R.string.passo2));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -66,7 +69,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 2:
             {
-                calcPontuacao1();
+                orientaTemporal();
                 texto.setText(getString(R.string.passo3));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -75,7 +78,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 3:
             {
-                calcPontuacao1();
+                orientaTemporal();
                 texto.setText(getString(R.string.passo4));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -84,7 +87,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 4:
             {
-                calcPontuacao1();
+                orientaTemporal();
                 texto.setText(getString(R.string.passo5));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -93,7 +96,8 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 5:
             {
-                calcPontuacao1();
+                //orientação espacial
+                orientaTemporal();
                 texto.setText(getString(R.string.passo6));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -102,7 +106,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 6:
             {
-                calcPontuacao1();
+                orientaEspacial();
                 texto.setText(getString(R.string.passo7));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -111,7 +115,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 7:
             {
-                calcPontuacao1();
+                orientaEspacial();
                 texto.setText(getString(R.string.passo8));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -120,7 +124,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 8:
             {
-                calcPontuacao1();
+                orientaEspacial();
                 texto.setText(getString(R.string.passo9));
                 btn_2.setText(getString(R.string.errou));
                 setVisible(2);
@@ -128,7 +132,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 9:
             {
-                calcPontuacao1();
+                orientaEspacial();
                 texto.setText(getString(R.string.passo10));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -137,7 +141,8 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 10:
             {
-                calcPontuacao1();
+                //memoria imediata
+                orientaEspacial();
                 texto.setText(getString(R.string.passo11));
                 btn_1.setText(getString(R.string.objeto1));
                 btn_2.setText(getString(R.string.objetos2));
@@ -147,8 +152,9 @@ public class TestMemoria extends AppCompatActivity {
                 break;
             }
             case 11:
-            {
-                calcPontuacao2();
+            {   //calculo
+                //calcPontuacao2();
+                memImediata();
                 texto.setText(getString(R.string.passo12));
                 btn_1.setText(getString(R.string.sim));
                 btn_2.setText(getString(R.string.nao));
@@ -161,7 +167,8 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 13:
             {
-                calcPontuacao4();
+
+                registraCalculo();
                 texto.setText(getString(R.string.passo13));
                 btn_1.setText(getString(R.string.objeto1));
                 btn_2.setText(getString(R.string.objetos2));
@@ -172,7 +179,8 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 14:
             {
-                calcPontuacao2();
+                //memoria recente
+                memRecente();
                 texto.setText(getString(R.string.passo14));
                 btn_1.setText(getString(R.string.objeto1));
                 btn_2.setText(getString(R.string.objetos2));
@@ -182,7 +190,8 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 15:
             {
-                calcPontuacao3();
+                //linguagem
+                linguagem3();
                 texto.setText(getString(R.string.passo17));
                 btn_1.setText(getString(R.string.acao1));
                 btn_2.setText(getString(R.string.acoes2));
@@ -193,7 +202,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 16:
             {
-                calcPontuacao2();
+                linguagem2();
                 texto.setText(getString(R.string.passo15));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -202,7 +211,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 17:
             {
-                calcPontuacao1();
+                linguagem1();
                 texto.setText(getString(R.string.passo16));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -211,7 +220,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 18:
             {
-                calcPontuacao1();
+                linguagem1();
                 texto.setText(getString(R.string.passo18));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -220,7 +229,7 @@ public class TestMemoria extends AppCompatActivity {
             }
             case 19:
             {
-                calcPontuacao1();
+                linguagem1();
                 texto.setText(getString(R.string.passo19));
                 imageView.setVisibility(View.VISIBLE);
                 btn_1.setText(getString(R.string.acertou));
@@ -230,9 +239,9 @@ public class TestMemoria extends AppCompatActivity {
             }
             default:
             {
-                calcPontuacao1();
+                linguagem1();
                 btn_proximo.setVisibility(View.VISIBLE);
-                texto.setText("Acertos: "+acerto+"\nErros: "+erro);
+                texto.setText("Orientação Temporal: "+ori_temporal+"\nOrientação Espacial: "+ori_espacial+"\nMemória Imediata: "+mem_imediata+"\nCalculo: "+calculo+"\nMemória Recente: "+mem_recente+"\nLinguagem: "+linguagem+"\nAcertos: "+acerto+"\nErros: "+erro);
             }
 
         }
@@ -261,7 +270,7 @@ public class TestMemoria extends AppCompatActivity {
                     voltar();
                 }
                 else {
-                    finish();
+                    startActivity(new Intent(Meem.this,MainActivity.class));
                 }
             }
         });
@@ -350,9 +359,23 @@ public class TestMemoria extends AppCompatActivity {
         else if (clicked==2){
             erro++;
         }
-        Toast.makeText(TestMemoria.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
     }
 
+    public void orientaTemporal(){
+        calcPontuacao1();
+        if (clicked==1){
+            ori_temporal++;
+        }
+        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nO.T.: "+ori_temporal, Toast.LENGTH_SHORT).show();
+    }
+
+    public void orientaEspacial(){
+        calcPontuacao1();
+        if (clicked==1){
+            ori_espacial++;
+        }
+        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nO.E.: "+ori_espacial, Toast.LENGTH_SHORT).show();
+    }
     public void calcPontuacao2(){
         if  (clicked==1){
             acerto = acerto +1;
@@ -368,22 +391,51 @@ public class TestMemoria extends AppCompatActivity {
         if (clicked==4){
             erro = erro+3;
         }
-        Toast.makeText(TestMemoria.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
     }
-    public void calcPontuacao3(){
+
+    public void memImediata(){
+        calcPontuacao2();
         if (clicked==1){
-            acerto = acerto +1;
-            erro = erro+1;
+            mem_imediata = 1;
         }
         if (clicked==2){
-            acerto = acerto +2;
+            mem_imediata = 2;
+        }
+        if (clicked==3){
+            mem_imediata = 3;
+        }
+    }
+
+    public void memRecente(){
+        calcPontuacao2();
+        if (clicked==1){
+            mem_recente++;
+        }
+        if (clicked==2){
+            mem_recente = mem_recente + 2;
+        }
+        if (clicked==3){
+            mem_recente = mem_recente + 3;
+        }
+    }
+
+    public void linguagem3(){
+        if (clicked==1){
+            acerto = acerto+1;
+            erro = erro+1;
+            linguagem++;
+        }
+        if (clicked==2){
+            acerto = acerto+2;
+            linguagem = linguagem+2;
         }
         if (clicked==3){
             erro = erro+2;
         }
-        Toast.makeText(TestMemoria.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
     }
-    public void calcPontuacao4(){
+    public void registraCalculo(){
         EditText calctxt_1, calctxt_2, calctxt_3, calctxt_4, calctxt_5;
         int n1,n2,n3,n4,n5;
 
@@ -418,30 +470,35 @@ public class TestMemoria extends AppCompatActivity {
 
             if (n1==93){
                 acerto++;
+                calculo++;
             }
             else {
                 erro++;
             }
             if (n2==86){
                 acerto++;
+                calculo++;
             }
             else {
                 erro++;
             }
             if (n3==79){
                 acerto++;
+                calculo++;
             }
             else {
                 erro++;
             }
             if (n4==72){
                 acerto++;
+                calculo++;
             }
             else {
                 erro++;
             }
             if (n5==65){
                 acerto++;
+                calculo++;
             }
             else {
                 erro++;
@@ -449,10 +506,31 @@ public class TestMemoria extends AppCompatActivity {
         }
         else if (clicked==1){
             acerto = acerto +5;
+            calculo = 5;
         }
         else if (clicked==2){
             erro = erro+5;
         }
-        Toast.makeText(TestMemoria.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
+    }
+
+    public void linguagem1(){
+        calcPontuacao1();
+        if (clicked==1){
+            linguagem++;
+        }
+    }
+
+    public void linguagem2(){
+        calcPontuacao2();
+        if (clicked==1){
+            linguagem++;
+        }
+        if (clicked==2){
+            linguagem = linguagem + 2;
+        }
+        if (clicked==3){
+            linguagem = linguagem + 3;
+        }
     }
 }

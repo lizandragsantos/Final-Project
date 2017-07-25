@@ -9,7 +9,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.lizandra.projectdetectalzheimer_2.gui.TestMemoria">
+        tools:context="com.example.lizandra.projectdetectalzheimer_2.view.Meem">
 
         <ImageView
             android:id="@+id/imageView"
