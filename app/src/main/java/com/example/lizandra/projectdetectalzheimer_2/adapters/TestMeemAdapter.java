@@ -1,10 +1,8 @@
 package com.example.lizandra.projectdetectalzheimer_2.adapters;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lizandra.projectdetectalzheimer_2.R;
-import com.example.lizandra.projectdetectalzheimer_2.dominio.Individuo;
 import com.example.lizandra.projectdetectalzheimer_2.dominio.TestMeem;
 import com.example.lizandra.projectdetectalzheimer_2.interfaces.OnRecyclerViewItemClickListener;
 
@@ -26,14 +23,14 @@ public class TestMeemAdapter extends RecyclerView.Adapter<TestMeemAdapter.ViewHo
 
     private List<TestMeem> testmeem;
     private LayoutInflater layoutinflater;
-
-    public TestMeemAdapter(List<Individuo> testmeem, FragmentActivity activity) {
-    }
-
+    private OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
 
     public TestMeemAdapter(List<TestMeem> testmeem,  Context context) {
         this.testmeem = testmeem;
         this.layoutinflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener onRecyclerViewItemClickListener){
+        this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
     }
 
     @Override
@@ -45,22 +42,16 @@ public class TestMeemAdapter extends RecyclerView.Adapter<TestMeemAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.tv_data.setText("Data: "+(testmeem.get(position).getData().toString()));
+        holder.tv_data.setText(testmeem.get(position).getData().toString());
         holder.tv_ori_temporal.setText("Orientação Temporal: "+((int) testmeem.get(position).getOri_temporal()));
-        holder.tv_ori_espacial.setText("Orientação Espacial"+((int) testmeem.get(position).getOri_espacial()));
+        holder.tv_ori_espacial.setText("Orientação Espacial: "+((int) testmeem.get(position).getOri_espacial()));
         holder.tv_mem_imediata.setText("Memória Imediata: "+((int) testmeem.get(position).getMem_imediata()));
-        holder.tv_mem_recente.setText("Memória Recente"+((int) testmeem.get(position).getMem_recente()));
-        holder.tv_calculo.setText("Calculo"+((int) testmeem.get(position).getCalculo()));
-        holder.tv_linguagem.setText("Linguagem"+((int) testmeem.get(position).getLinguagem()));
-        holder.tv_acertos.setText("Acertos"+((int) testmeem.get(position).getAcertos()));
-        holder.tv_erros.setText("Erros"+((int) testmeem.get(position).getErros()));
+        holder.tv_mem_recente.setText("Memória Recente: "+((int) testmeem.get(position).getMem_recente()));
+        holder.tv_calculo.setText("Calculo: "+((int) testmeem.get(position).getCalculo()));
+        holder.tv_linguagem.setText("Linguagem: "+((int) testmeem.get(position).getLinguagem()));
+        holder.tv_acertos.setText("Acertos: "+((int) testmeem.get(position).getAcertos()));
+        holder.tv_erros.setText("Erros: "+((int) testmeem.get(position).getErros()));
 
-        holder.bt_excluir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
     }
 
@@ -78,7 +69,21 @@ public class TestMeemAdapter extends RecyclerView.Adapter<TestMeemAdapter.ViewHo
         testmeem.remove(tm);
         notifyItemRemoved(position);
     }
-    public class ViewHolder extends RecyclerView.ViewHolder{
+
+    public List<TestMeem> getItems() {
+        return testmeem;
+    }
+
+    public void setItems(List<TestMeem> mItems) {
+        this.testmeem = mItems;
+        notifyDataSetChanged();
+    }
+
+    public TestMeem getItem(int position) {
+        return (getItems() != null && !getItems().isEmpty()) ? getItems().get(position) : null ;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView tv_data;
         public TextView tv_ori_temporal;
         public TextView tv_ori_espacial;
@@ -89,6 +94,7 @@ public class TestMeemAdapter extends RecyclerView.Adapter<TestMeemAdapter.ViewHo
         public TextView tv_acertos;
         public TextView tv_erros;
         public Button bt_excluir;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -101,7 +107,13 @@ public class TestMeemAdapter extends RecyclerView.Adapter<TestMeemAdapter.ViewHo
             tv_linguagem = (TextView) itemView.findViewById(R.id.tv_linguagem);
             tv_acertos = (TextView) itemView.findViewById(R.id.tv_acertos);
             tv_erros = (TextView) itemView.findViewById(R.id.tv_erros);
-            bt_excluir = (Button) itemView.findViewById(R.id.bt_excluir);
+            bt_excluir = (Button) itemView.findViewById(R.id.btn_excluir);
+            bt_excluir.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onRecyclerViewItemClickListener.onClickListener(v, getAdapterPosition());
         }
     }
 }

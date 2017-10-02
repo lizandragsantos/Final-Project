@@ -8,45 +8,61 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lizandra.projectdetectalzheimer_2.R;
+import com.example.lizandra.projectdetectalzheimer_2.dao.IndividuoDAO;
+import com.example.lizandra.projectdetectalzheimer_2.dao.TestMeemDAO;
+import com.example.lizandra.projectdetectalzheimer_2.dominio.Individuo;
+import com.example.lizandra.projectdetectalzheimer_2.dominio.TestMeem;
 
 /**
  * Created by LIZANDRA on 18/05/2017.
  */
 
-public class Meem extends AppCompatActivity {
+public class AddMeemActivity extends AppCompatActivity {
 
-    TextView texto;
-    Button btn_1, btn_2, btn_3, btn_4, btn_voltar, btn_proximo;
-    LinearLayout lcalculo;
-    ImageView imageView;
-    int i=0, clicked=0;
-    private float acerto=0, erro=0, ori_temporal=0, ori_espacial=0, mem_imediata=0, calculo=0, mem_recente=0, linguagem=0;
-
+    private TextView texto;
+    private Button btn_1, btn_2, btn_3, btn_4, btn_finalizar, btn_proximo;
+    private LinearLayout lcalculo;
+    private ImageView imageView;
+    private int i, clicked=0;
+    private TestMeem meem;
+    private TestMeemDAO testMeemDAO;
+    private IndividuoDAO individuoDAO;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_testmemoria);
+        setContentView(R.layout.activity_addtestmeem);
+        this.testMeemDAO = new TestMeemDAO(this);
+        this.individuoDAO = new IndividuoDAO(this);
+        initView();
+        receberDadosIndividuo();
+        habilitarViews(i);
+        verificarBotaoClickado();
+        proximo();
+        finalizar();
+
+    }
+
+    public void initView(){
         texto = (TextView) findViewById(R.id.texto);
         btn_1 = (Button) findViewById(R.id.btn_1);
         btn_2 = (Button) findViewById(R.id.btn_2);
         btn_3 = (Button) findViewById(R.id.btn_3);
         btn_4 = (Button) findViewById(R.id.btn_4);
-        btn_voltar = (Button) findViewById(R.id.btn_cancelar);
+        btn_finalizar = (Button) findViewById(R.id.btn_finalizar);
+        btn_finalizar.setText(R.string.finalizar);
         btn_proximo = (Button) findViewById(R.id.btn_proximo);
+        btn_proximo.setText(R.string.proximo);
         lcalculo = (LinearLayout) findViewById(R.id.lcalculo);
         imageView = (ImageView) findViewById(R.id.imageView);
-
-        habilitarViews(i);
-        verificarBotaoClickado();
-        proximo();
-
     }
     public void habilitarViews(int passo){
+
         setInvisible();
+        int n1 =0, n2 = 0, n3 = 0, n4 = 0, n5 = 0;
 
         switch (passo)
         {
@@ -60,7 +76,7 @@ public class Meem extends AppCompatActivity {
                 break;
             }
             case 1:
-            {   orientaTemporal();
+            {   meem.realizarTeste(1,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo2));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -69,7 +85,7 @@ public class Meem extends AppCompatActivity {
             }
             case 2:
             {
-                orientaTemporal();
+                meem.realizarTeste(1,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo3));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -78,7 +94,7 @@ public class Meem extends AppCompatActivity {
             }
             case 3:
             {
-                orientaTemporal();
+                meem.realizarTeste(1,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo4));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -87,7 +103,7 @@ public class Meem extends AppCompatActivity {
             }
             case 4:
             {
-                orientaTemporal();
+                meem.realizarTeste(1,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo5));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -97,7 +113,7 @@ public class Meem extends AppCompatActivity {
             case 5:
             {
                 //orientação espacial
-                orientaTemporal();
+                meem.realizarTeste(1,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo6));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -106,7 +122,7 @@ public class Meem extends AppCompatActivity {
             }
             case 6:
             {
-                orientaEspacial();
+                meem.realizarTeste(2,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo7));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -115,7 +131,7 @@ public class Meem extends AppCompatActivity {
             }
             case 7:
             {
-                orientaEspacial();
+                meem.realizarTeste(2,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo8));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -124,7 +140,7 @@ public class Meem extends AppCompatActivity {
             }
             case 8:
             {
-                orientaEspacial();
+                meem.realizarTeste(2,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo9));
                 btn_2.setText(getString(R.string.errou));
                 setVisible(2);
@@ -132,7 +148,7 @@ public class Meem extends AppCompatActivity {
             }
             case 9:
             {
-                orientaEspacial();
+                meem.realizarTeste(2,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo10));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -142,7 +158,7 @@ public class Meem extends AppCompatActivity {
             case 10:
             {
                 //memoria imediata
-                orientaEspacial();
+                meem.realizarTeste(2,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo11));
                 btn_1.setText(getString(R.string.objeto1));
                 btn_2.setText(getString(R.string.objetos2));
@@ -153,8 +169,7 @@ public class Meem extends AppCompatActivity {
             }
             case 11:
             {   //calculo
-                //calcPontuacao2();
-                memImediata();
+                meem.realizarTeste(3,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo12));
                 btn_1.setText(getString(R.string.sim));
                 btn_2.setText(getString(R.string.nao));
@@ -167,8 +182,8 @@ public class Meem extends AppCompatActivity {
             }
             case 13:
             {
-
-                registraCalculo();
+                setValorCalculo(n1, n2, n3, n4, n5);
+                meem.realizarTeste(5,clicked,0,n1,n2,n3,n4,n5);
                 texto.setText(getString(R.string.passo13));
                 btn_1.setText(getString(R.string.objeto1));
                 btn_2.setText(getString(R.string.objetos2));
@@ -180,7 +195,7 @@ public class Meem extends AppCompatActivity {
             case 14:
             {
                 //memoria recente
-                memRecente();
+                meem.realizarTeste(4,clicked,0,0,0,0,0,0);
                 texto.setText(getString(R.string.passo14));
                 btn_1.setText(getString(R.string.objeto1));
                 btn_2.setText(getString(R.string.objetos2));
@@ -191,7 +206,7 @@ public class Meem extends AppCompatActivity {
             case 15:
             {
                 //linguagem
-                linguagem3();
+                meem.realizarTeste(6,clicked,3,0,0,0,0,0);
                 texto.setText(getString(R.string.passo17));
                 btn_1.setText(getString(R.string.acao1));
                 btn_2.setText(getString(R.string.acoes2));
@@ -202,7 +217,7 @@ public class Meem extends AppCompatActivity {
             }
             case 16:
             {
-                linguagem2();
+                meem.realizarTeste(6,clicked,2,0,0,0,0,0);
                 texto.setText(getString(R.string.passo15));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -211,7 +226,7 @@ public class Meem extends AppCompatActivity {
             }
             case 17:
             {
-                linguagem1();
+                meem.realizarTeste(6,clicked,1,0,0,0,0,0);
                 texto.setText(getString(R.string.passo16));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -220,7 +235,7 @@ public class Meem extends AppCompatActivity {
             }
             case 18:
             {
-                linguagem1();
+                meem.realizarTeste(6,clicked,1,0,0,0,0,0);
                 texto.setText(getString(R.string.passo18));
                 btn_1.setText(getString(R.string.acertou));
                 btn_2.setText(getString(R.string.errou));
@@ -229,7 +244,7 @@ public class Meem extends AppCompatActivity {
             }
             case 19:
             {
-                linguagem1();
+                meem.realizarTeste(6,clicked,1,0,0,0,0,0);
                 texto.setText(getString(R.string.passo19));
                 imageView.setVisibility(View.VISIBLE);
                 btn_1.setText(getString(R.string.acertou));
@@ -239,39 +254,29 @@ public class Meem extends AppCompatActivity {
             }
             default:
             {
-                linguagem1();
-                btn_proximo.setVisibility(View.VISIBLE);
-                texto.setText("Orientação Temporal: "+ori_temporal+"\nOrientação Espacial: "+ori_espacial+"\nMemória Imediata: "+mem_imediata+"\nCalculo: "+calculo+"\nMemória Recente: "+mem_recente+"\nLinguagem: "+linguagem+"\nAcertos: "+acerto+"\nErros: "+erro);
+                meem.realizarTeste(6,clicked,1,0,0,0,0,0);
+                btn_finalizar.setVisibility(View.VISIBLE);
+                texto.setText(getString(R.string.diagnostico)+"\n\nResultdo da avaliação cognitiva\n\nOrientação Temporal: "+meem.getOri_temporal()+"\nOrientação Espacial: "+meem.getOri_espacial()+"\nMemória Imediata: "+meem.getMem_imediata()+"\nCalculo: "+meem.getCalculo()+"\nMemória Recente: "+meem.getMem_recente()+"\nLinguagem: "+meem.getLinguagem()+"\nAcertos: "+meem.getAcertos()+"\nErros: "+meem.getErros());
             }
 
         }
     }
-    public boolean voltar(){
-        btn_voltar.setOnClickListener(new View.OnClickListener() {
+    public void finalizar(){
+        btn_finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(i!=0){
-                    habilitarViews(--i);
-                }
-                else {
-                   finish();
-                }
+                meem = testMeemDAO.inserirTestMeem( meem.getOri_temporal(), meem.getOri_espacial(), meem.getMem_imediata(), meem.getMem_recente(), meem.getCalculo(), meem.getLinguagem(), meem.getAcertos(), meem.getErros(),meem.getIndividuo().getId());
+                setResult(RESULT_OK);
+                finish();
             }
         });
-        return true;
     }
     public void proximo(){
         btn_proximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(i<18){
-                    clicked = 5;
-                    habilitarViews(++i);
-                    voltar();
-                }
-                else {
-                    startActivity(new Intent(Meem.this,MainActivity.class));
-                }
+                clicked = 5;
+                habilitarViews(++i);
             }
         });
     }
@@ -284,7 +289,7 @@ public class Meem extends AppCompatActivity {
         imageView.setVisibility(View.INVISIBLE);
         lcalculo.setVisibility(View.INVISIBLE);
         btn_proximo.setVisibility(View.INVISIBLE);
-        btn_voltar.setVisibility(View.INVISIBLE);
+        btn_finalizar.setVisibility(View.INVISIBLE);
 
     }
     public void setVisible(int botoes){
@@ -352,185 +357,55 @@ public class Meem extends AppCompatActivity {
             setVisible(2);
         }
     }
-    public void calcPontuacao1(){
-        if  (clicked==1){
-            acerto++;
-        }
-        else if (clicked==2){
-            erro++;
-        }
-    }
 
-    public void orientaTemporal(){
-        calcPontuacao1();
-        if (clicked==1){
-            ori_temporal++;
-        }
-        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nO.T.: "+ori_temporal, Toast.LENGTH_SHORT).show();
-    }
+   public void setValorCalculo(int n1, int n2, int n3, int n4, int n5){
+       EditText calctxt_1, calctxt_2, calctxt_3, calctxt_4, calctxt_5;
 
-    public void orientaEspacial(){
-        calcPontuacao1();
-        if (clicked==1){
-            ori_espacial++;
-        }
-        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nO.E.: "+ori_espacial, Toast.LENGTH_SHORT).show();
-    }
-    public void calcPontuacao2(){
-        if  (clicked==1){
-            acerto = acerto +1;
-            erro = erro+2;
-        }
-        if (clicked==2){
-            acerto = acerto +2;
-            erro = erro+1;
-        }
-        if (clicked==3){
-            acerto = acerto +3;
-        }
-        if (clicked==4){
-            erro = erro+3;
-        }
-        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
-    }
+       calctxt_1 = (EditText) findViewById(R.id.calctxt_1);
+       calctxt_2 = (EditText) findViewById(R.id.calctxt_2);
+       calctxt_3 = (EditText) findViewById(R.id.calctxt_3);
+       calctxt_4 = (EditText) findViewById(R.id.calctxt_4);
+       calctxt_5 = (EditText) findViewById(R.id.calctxt_5);
 
-    public void memImediata(){
-        calcPontuacao2();
-        if (clicked==1){
-            mem_imediata = 1;
-        }
-        if (clicked==2){
-            mem_imediata = 2;
-        }
-        if (clicked==3){
-            mem_imediata = 3;
-        }
-    }
+       if (calctxt_1.getText().toString().isEmpty())
+           n1=0;
+       else
+           n1 = Integer.parseInt(calctxt_1.getText().toString());
+       if (calctxt_2.getText().toString().isEmpty())
+           n2=0;
+       else
+           n2 = Integer.parseInt(calctxt_2.getText().toString());
+       if (calctxt_3.getText().toString().isEmpty())
+           n3=0;
+       else
+           n3 = Integer.parseInt(calctxt_3.getText().toString());
+       if (calctxt_4.getText().toString().isEmpty())
+           n4=0;
+       else
+           n4 = Integer.parseInt(calctxt_4.getText().toString());
+       if (calctxt_5.getText().toString().isEmpty())
+           n5=0;
+       else
+           n5 = Integer.parseInt(calctxt_5.getText().toString());
 
-    public void memRecente(){
-        calcPontuacao2();
-        if (clicked==1){
-            mem_recente++;
-        }
-        if (clicked==2){
-            mem_recente = mem_recente + 2;
-        }
-        if (clicked==3){
-            mem_recente = mem_recente + 3;
-        }
-    }
+   }
 
-    public void linguagem3(){
-        if (clicked==1){
-            acerto = acerto+1;
-            erro = erro+1;
-            linguagem++;
-        }
-        if (clicked==2){
-            acerto = acerto+2;
-            linguagem = linguagem+2;
-        }
-        if (clicked==3){
-            erro = erro+2;
-        }
-        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
-    }
-    public void registraCalculo(){
-        EditText calctxt_1, calctxt_2, calctxt_3, calctxt_4, calctxt_5;
-        int n1,n2,n3,n4,n5;
+    public void receberDadosIndividuo(){
 
-        if (clicked==5)
-        {
-            calctxt_1 = (EditText) findViewById(R.id.calctxt_1);
-            calctxt_2 = (EditText) findViewById(R.id.calctxt_2);
-            calctxt_3 = (EditText) findViewById(R.id.calctxt_3);
-            calctxt_4 = (EditText) findViewById(R.id.calctxt_4);
-            calctxt_5 = (EditText) findViewById(R.id.calctxt_5);
+       Intent intent = getIntent();
+        Individuo auxIndividuo;
+       if (intent != null){
+           Bundle params = intent.getExtras();
+           Long id = params.getLong("id");
+           auxIndividuo = individuoDAO.getIndividuoById(id);
+           if (auxIndividuo == null){
+               Toast.makeText(getApplicationContext(),"individuo nulo", Toast.LENGTH_SHORT).show();
+           }else {
+               meem = new TestMeem(auxIndividuo);
+           }
 
-            if (calctxt_1.getText().toString().isEmpty())
-                n1=0;
-            else
-                n1 = Integer.parseInt(calctxt_1.getText().toString());
-            if (calctxt_2.getText().toString().isEmpty())
-                n2=0;
-            else
-                n2 = Integer.parseInt(calctxt_2.getText().toString());
-            if (calctxt_3.getText().toString().isEmpty())
-                n3=0;
-            else
-                n3 = Integer.parseInt(calctxt_3.getText().toString());
-            if (calctxt_4.getText().toString().isEmpty())
-                n4=0;
-            else
-                n4 = Integer.parseInt(calctxt_4.getText().toString());
-            if (calctxt_5.getText().toString().isEmpty())
-                n5=0;
-            else
-                n5 = Integer.parseInt(calctxt_5.getText().toString());
 
-            if (n1==93){
-                acerto++;
-                calculo++;
-            }
-            else {
-                erro++;
-            }
-            if (n2==86){
-                acerto++;
-                calculo++;
-            }
-            else {
-                erro++;
-            }
-            if (n3==79){
-                acerto++;
-                calculo++;
-            }
-            else {
-                erro++;
-            }
-            if (n4==72){
-                acerto++;
-                calculo++;
-            }
-            else {
-                erro++;
-            }
-            if (n5==65){
-                acerto++;
-                calculo++;
-            }
-            else {
-                erro++;
-            }
-        }
-        else if (clicked==1){
-            acerto = acerto +5;
-            calculo = 5;
-        }
-        else if (clicked==2){
-            erro = erro+5;
-        }
-        Toast.makeText(Meem.this,"Acertos: "+ acerto +"\nErros: "+erro, Toast.LENGTH_SHORT).show();
-    }
+       }
+   }
 
-    public void linguagem1(){
-        calcPontuacao1();
-        if (clicked==1){
-            linguagem++;
-        }
-    }
-
-    public void linguagem2(){
-        calcPontuacao2();
-        if (clicked==1){
-            linguagem++;
-        }
-        if (clicked==2){
-            linguagem = linguagem + 2;
-        }
-        if (clicked==3){
-            linguagem = linguagem + 3;
-        }
-    }
 }

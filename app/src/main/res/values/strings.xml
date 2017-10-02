@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjectDetectAlzheimer_2</string>
+    <string name="app_name">app_name</string>
     <string name="passo1">Em que dia da semana estamos?</string>
     <string name="passo2">Em qual dia do mês?</string>
     <string name="passo3">Em qual mês?</string>
@@ -21,6 +21,8 @@
     <string name="passo17">Pegue outra folha de papel, peça-o que quando entregar pegue com sua mão direita, dobre-o na metade com as duas mãos e coloque no chão.</string>
     <string name="passo18">Peça-o que escreva uma frase de sua preferência em uma folha em branco, caso apresente algum erro permita corrigir caso tenha consciência do erro em no máximo trinta segundos.</string>
     <string name="passo19">Peça-o que desenhe em uma folha a imagem a seguir:\n\nA ação estará correta se o desenho tiver dois pentágonos com intersecção de um ângulo.</string>
+    <string name="diagnostico">     Este teste abrange algumas funções cognitivas como orientação, memoria, atenção, entre outras hailidades especificas. A pontuação máxima é 30 pontos, valores mais altos do score indicam maior desempenho cognitivo. Há notas de corte distintas para pessoas com graus diferentes de instrução. Logo para pessoas analfabetas a nota de corte é 13 pontos, 18 pontos para escolaridade de baixa/média; 26 para alto grau de instrução.\n\     Atenção, caso o individuo avaliado esteja abaixo da nota de corte conforme informado acima, procure um profissional especializado para obter um diagnostico efetivo </string>
+    <string name="instrucao">    Mini Exame de Estado Mental, também conhecido pela sigla MEEM, este é o teste mais utilizado para avaliar a função cognitiva por ser rápido e de fácil aplicação. Deve ser utilizado como instrumento de rastreamento, não substituindo uma avaliação mais detalhada, não serve como teste diagnóstico, mas sim pra indicar funções que precisam ser investigadas.\n\n   A pessoa a ser avaliada deve ser deixada à vontade, não deve ajuda-lo e eventuais erros cometidos por ele durante a prova não devem ser corrigidos, pois esta correção pode inibi-lo.\n   Não esqueça de pegar uma folha de papel e uma caneta/lápis, pois será útil durante o teste.\n\n   Lembrando que o teste não deve ser realizado pela pessoa que irá ser avaliada.\n</string>
     <string name="acertou">Acertou</string>
     <string name="errou">Errou</string>
     <string name="objeto1">1 Objeto</string>
@@ -32,7 +34,10 @@
     <string name="nenhum">Nenhum</string>
     <string name="sim">SIM</string>
     <string name="nao">NÃO</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="finalizar">FINALIZAR</string>
+    <string name="cadastrar">CADASTRAR</string>
+    <string name="alterar">ALTERAR</string>
+    <string name="proximo">PRÓXIMO</string>
+    <string name="atualizar">ATUALIZAR</string>
 
 </resources>

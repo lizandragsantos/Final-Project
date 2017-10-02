@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#536DFE</color>
     <color name="colorPrimarytext">#212121</color>
-    <color name="colorDivider">#ccc</color>
+    <color name="colorDivider">#CCCCCC</color>
+    <color name="colorActionMode">#BDBDBD</color>
+
 </resources>

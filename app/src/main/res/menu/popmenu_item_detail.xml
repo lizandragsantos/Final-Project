@@ -14,11 +14,11 @@
     <item
         android:id="@+id/item_testes_realizados"
         android:orderInCategory="101"
-        android:title="Testes já realizados"/>
+        android:title="Testes realizados"/>
 
     <item
         android:id="@+id/item_teste"
         android:orderInCategory="102"
-        android:title="Novo teste de memória"></item>
+        android:title="Teste de memória"></item>
 
 </menu>

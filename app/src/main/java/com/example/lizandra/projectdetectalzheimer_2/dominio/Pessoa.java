@@ -1,18 +1,24 @@
 package com.example.lizandra.projectdetectalzheimer_2.dominio;
 
 
-public abstract class Pessoa {
+import java.io.Serializable;
+
+public abstract class Pessoa extends ObjetoDominio implements Serializable {
     private String nome;
     private String sexo;
+
 
     public Pessoa(String nome, String sexo){
         this.nome = nome;
         this.sexo = sexo;
+
     }
+    public Pessoa(){}
 
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -24,4 +30,5 @@ public abstract class Pessoa {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
 }

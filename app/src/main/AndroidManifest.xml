@@ -9,17 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.ListIndividuosActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.InstruTest"></activity>
-        <activity android:name=".view.CadastroIndividuo"></activity>
-        <activity android:name=".view.Meem"></activity>
-        <!--activity android:name=".view.MainActivity"></activity>-->
+        <activity android:name=".view.InstrucaoActivity"></activity>
+        <activity android:name=".view.AddIndividuoActivity"></activity>
+        <activity android:name=".view.AddMeemActivity"></activity>
+        <activity android:name=".view.AlterarIndividuoActivity"></activity>
+        <activity android:name=".view.ListTestsActivity"></activity>
     </application>
 
 </manifest>

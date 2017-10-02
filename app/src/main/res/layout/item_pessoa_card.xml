@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="0dp"
-    android:layout_marginLeft="0dp"
-    android:layout_marginRight="0dp"
-    android:layout_marginTop="0dp"
-    app:cardCornerRadius="4dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="0dp"
     app:cardElevation="3dp"
     app:cardMaxElevation="3dp"
     app:cardPreventCornerOverlap="false"
@@ -43,10 +43,11 @@
             android:textColor="@color/colorPrimarytext"
             android:layout_below="@+id/tv_escolaridade"
             android:layout_alignLeft="@+id/tv_nome"
-            android:id="@+id/tv_idade"
+            android:id="@+id/tv_idade2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
+            android:layout_marginBottom="15dp"
             android:textSize="12sp" />
 
         <ImageButton
@@ -61,15 +62,6 @@
             android:paddingTop="8dp"
             android:src="@drawable/ic_more_vert_black_18dp"
             android:background="@android:color/white"/>
-
-        <View
-            android:id="@+id/vw_divider"
-            android:layout_width="match_parent"
-            android:layout_height="0.8dp"
-            android:layout_alignLeft="@+id/tv_nome"
-            android:layout_below="@+id/tv_idade"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorDivider"/>
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

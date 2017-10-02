@@ -1,23 +1,24 @@
 package com.example.lizandra.projectdetectalzheimer_2.dominio;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class TestMemoria extends AbsTestMemoria {
+import java.io.Serializable;
 
-    List<TestMeem> meem;
+public abstract class TestMemoria extends ObjetoDominio implements Serializable {
 
-    public TestMemoria(Individuo individuo){
-        super(individuo);
+    private Individuo individuo;
+
+    public abstract void realizarTeste(int opt, int clicked, int fase, int n1, int n2, int n3, int n4, int n5);
+
+    public TestMemoria(Individuo individuo) {
+        this.individuo = individuo;
     }
 
-
-    public void setMeem(List<TestMeem> meem) {
-        this.meem = meem;
+    public void setIndividuo(Individuo individuo) {
+        this.individuo = individuo;
     }
 
-    public List<TestMeem> getMeem() {
-        return meem;
+    public Pessoa getIndividuo() {
+        return individuo;
     }
 
 }
