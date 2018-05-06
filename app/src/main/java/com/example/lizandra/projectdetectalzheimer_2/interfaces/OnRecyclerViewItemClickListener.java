@@ -10,5 +10,5 @@ import android.view.View;
 public interface OnRecyclerViewItemClickListener {
 
     public void onClickListener(View view, int adapterPosition);
-    public void onLongPressClickListener(View view, int adapterPosition);
+    //public void onLongPressClickListener(View view, int adapterPosition);
 }

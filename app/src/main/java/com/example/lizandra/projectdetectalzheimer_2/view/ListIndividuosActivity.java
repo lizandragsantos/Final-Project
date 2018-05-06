@@ -54,6 +54,7 @@ public class ListIndividuosActivity extends AppCompatActivity implements OnPopup
     }
 
     private void initViews(){
+        //Inicialização das views
         this.toolbar = (Toolbar) findViewById(R.id.app_toolbar);
         this.toolbar.setTitle("AppName");
         setSupportActionBar(toolbar);
@@ -89,6 +90,7 @@ public class ListIndividuosActivity extends AppCompatActivity implements OnPopup
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //Atualização do recylerview após adicionar novo itens à lista de individuos
         if (requestCode == REQUEST_CODE_ADD_INDIVIDUO){
             if (resultCode == RESULT_OK){
                 if (data != null){
@@ -99,8 +101,12 @@ public class ListIndividuosActivity extends AppCompatActivity implements OnPopup
                         }
                         listIndividuos.add(auxIndividuo);
                         if (individuoAdapter == null){
+                            if (recyclerview.getVisibility() != View.VISIBLE)
+                                recyclerview.setVisibility(View.VISIBLE);
                             individuoAdapter = new IndividuoAdapter(listIndividuos, ListIndividuosActivity.this);
                             recyclerview.setAdapter(individuoAdapter);
+                            individuoAdapter.setPopupMenuListner(this);
+
                         }
                         else {
                             individuoAdapter.setItems(listIndividuos);

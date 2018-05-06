@@ -3,7 +3,7 @@ package com.example.lizandra.projectdetectalzheimer_2.dominio;
 
 import java.io.Serializable;
 
-public abstract class Pessoa extends ObjetoDominio implements Serializable {
+public abstract class Pessoa extends ObjetoDominio{
     private String nome;
     private String sexo;
 
